@@ -1,0 +1,6 @@
+framework module Pods_MovieAppViper {
+  umbrella header "Pods-MovieAppViper-umbrella.h"
+
+  export *
+  module * { export * }
+}

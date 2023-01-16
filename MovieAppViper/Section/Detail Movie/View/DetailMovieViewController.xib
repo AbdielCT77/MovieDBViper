@@ -12,13 +12,14 @@
             <connections>
                 <outlet property="backDropImage" destination="ziR-Eh-bvV" id="5GJ-OW-VlI"/>
                 <outlet property="backdropImageView" destination="zHw-H8-v93" id="XdS-fB-DsB"/>
-                <outlet property="collectionView" destination="8I4-PO-kLs" id="uQK-wP-syH"/>
                 <outlet property="genreLbl" destination="g1y-55-kvS" id="STd-sg-dqc"/>
                 <outlet property="movieDescLbl" destination="6pD-jc-Mhh" id="xFK-Pe-2Qa"/>
                 <outlet property="movieTitleLbl" destination="x4j-Nh-96W" id="q1z-wq-fOt"/>
                 <outlet property="playTrailerBtn" destination="WWN-eN-8Id" id="yYs-nM-eF2"/>
                 <outlet property="playerVIew" destination="pX1-pl-W1J" id="pxr-jF-rnr"/>
                 <outlet property="ratingLbl" destination="t6y-Kj-K29" id="rmE-Xn-siU"/>
+                <outlet property="tableView" destination="M7C-Zo-aBQ" id="M8w-e3-Wfa"/>
+                <outlet property="tableViewHeight" destination="IC0-wB-3ai" id="pvD-gj-HlV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="socialMediaButton" destination="JwB-pS-XMM" collectionClass="NSMutableArray" id="uRC-a0-qYy"/>
                 <outletCollection property="socialMediaButton" destination="o16-sW-9dg" collectionClass="NSMutableArray" id="wba-ir-JfL"/>
@@ -31,7 +32,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fd1-KY-Jix">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fd1-KY-Jix">
                     <rect key="frame" x="-11" y="48" width="425" height="814"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="raT-cI-7pC">
@@ -226,16 +227,13 @@
                                                         <constraint firstAttribute="height" constant="30" id="vLD-Kz-5t1"/>
                                                     </constraints>
                                                 </view>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8I4-PO-kLs">
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="M7C-Zo-aBQ">
                                                     <rect key="frame" x="0.0" y="380" width="414" height="400"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dc1-bA-78Q">
-                                                        <size key="itemSize" width="128" height="128"/>
-                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    </collectionViewFlowLayout>
-                                                </collectionView>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="400" id="IC0-wB-3ai"/>
+                                                    </constraints>
+                                                </tableView>
                                             </subviews>
                                         </stackView>
                                     </subviews>

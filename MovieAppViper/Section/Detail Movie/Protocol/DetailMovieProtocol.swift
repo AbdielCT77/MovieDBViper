@@ -6,12 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 protocol DetailMovieViewToPresenterProtocol: AnyObject {
     var view: DetailMoviePresenterToViewProtocol? {get set}
     var interactor: DetailMoviePresenterToInteractorProtocol? {get set}
     var router: DetailMoviePresenterToRouterProtocol? {get set}
     func fetchMovieDetail(movieId: Int)
+    func showDetailMovieFromSimilarController(
+        navigationController: UINavigationController, movie: Int
+    )
     
 }
 
@@ -23,6 +27,9 @@ protocol DetailMoviePresenterToViewProtocol: AnyObject {
 
 protocol DetailMoviePresenterToRouterProtocol: AnyObject {
     static func createModule(movieId: Int)-> DetailMovieViewController
+    func showDetailMovieFromSimilarController(
+        navigationController: UINavigationController, movie: Int
+    )
 }
 
 protocol DetailMoviePresenterToInteractorProtocol: AnyObject {

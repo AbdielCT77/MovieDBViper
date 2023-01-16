@@ -27,4 +27,10 @@ class DetailMovieRouter: DetailMoviePresenterToRouterProtocol {
         return controller
     }
     
+    func showDetailMovieFromSimilarController(
+        navigationController: UINavigationController, movie: Int
+    ) {
+        let movieModule = DetailMovieRouter.createModule(movieId: movie)
+        navigationController.pushViewController(movieModule, animated: true)
+    }
 }

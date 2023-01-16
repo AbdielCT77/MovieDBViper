@@ -21,13 +21,17 @@ class DetailMovieViewController: UIViewController {
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var movieDescLbl: UILabel!
     @IBOutlet var socialMediaButton: [UIButton]!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
     // MARK: - Variable -
     var dataDetail: DetailMovieResponse?
     var presenter: DetailMovieViewToPresenterProtocol?
     var movieId: Int?
     private var youtubeKey = ""
+    internal let detailSection: [DetailEnumSection] = [
+        .cast, .similarMovies
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +40,17 @@ class DetailMovieViewController: UIViewController {
     }
     
     private func setupCollectionView(){
-        
+        tableView.register(
+            DetailMovieCastTableViewCell.nib(),
+            forCellReuseIdentifier: DetailMovieCastTableViewCell.identifier
+        )
+        tableView.register(
+            DetailMovieSimilarTableViewCell.nib(),
+            forCellReuseIdentifier: DetailMovieSimilarTableViewCell.identifier
+        )
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
     }
     
     private func fetchDetail(){
@@ -128,27 +142,33 @@ class DetailMovieViewController: UIViewController {
     @objc func instagramBtnTapped(_ sender: Any) {
         openSocialMedia(
             appUrl: URL(
-                string: "instagram://user?username=" + (dataDetail?.externalIds?.instagramId ?? "")
+                string: "instagram://user?username=" +
+                (dataDetail?.externalIds?.instagramId ?? "")
             )!,
-            urlString: "https://instagram.com/" + (dataDetail?.externalIds?.instagramId ?? "")
+            urlString: "https://instagram.com/" +
+            (dataDetail?.externalIds?.instagramId ?? "")
         )
     }
     
     @objc func facebookBtnTapped(_ sender: Any) {
         openSocialMedia(
             appUrl: URL(
-                string: "fb://profile/" + (dataDetail?.externalIds?.facebookId ?? "")
+                string: "fb://profile/" +
+                (dataDetail?.externalIds?.facebookId ?? "")
             )!,
-            urlString: "https://facebook.com/" + (dataDetail?.externalIds?.facebookId ?? "")
+            urlString: "https://facebook.com/" +
+            (dataDetail?.externalIds?.facebookId ?? "")
         )
     }
     
     @objc func twitterBtnTapped(_ sender: Any) {
         openSocialMedia(
             appUrl: URL(
-                string: "twitter://user?screen_name=" + (dataDetail?.externalIds?.twitterId ?? "")
+                string: "twitter://user?screen_name=" +
+                (dataDetail?.externalIds?.twitterId ?? "")
             )!,
-            urlString: "https://twitter.com/" + (dataDetail?.externalIds?.twitterId ?? "")
+            urlString: "https://twitter.com/" +
+            (dataDetail?.externalIds?.twitterId ?? "")
         )
     }
 
@@ -170,6 +190,8 @@ extension DetailMovieViewController: DetailMoviePresenterToViewProtocol {
         guard let detail = data else { return }
         dataDetail = detail
         setUI()
+        tableView.reloadData()
+        tableViewHeight.constant = tableView.contentSize.height
     }
     
     func showError(error: BaseError) {
@@ -201,4 +223,76 @@ extension DetailMovieViewController: YTPlayerViewDelegate{
             withVideoId: youtubeKey
         )
     }
+}
+
+extension DetailMovieViewController: UITableViewDelegate,
+                                     UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return detailSection.count
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        switch detailSection[section] {
+        case .cast:
+            return 1
+        case .similarMovies:
+            return 1
+        }
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        switch detailSection[indexPath.section] {
+        case .cast:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: DetailMovieCastTableViewCell.identifier,
+                for: indexPath
+            ) as! DetailMovieCastTableViewCell
+            cell.configureData(cast: dataDetail?.credits?.cast)
+            return cell
+        case .similarMovies:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: DetailMovieSimilarTableViewCell.identifier,
+                for: indexPath
+            ) as! DetailMovieSimilarTableViewCell
+            cell.configureData(model: dataDetail?.similar?.results)
+            cell.navigationController = self.navigationController
+            cell.presenter = presenter
+            return cell
+        }
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        titleForHeaderInSection section: Int
+    ) -> String? {
+        switch detailSection[section] {
+        case .cast:
+            return detailSection[section].title
+        case .similarMovies:
+            return detailSection[section].title
+        }
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        switch detailSection[indexPath.section] {
+        case .cast:
+            return 190
+        case .similarMovies:
+            return 190
+        }
+    }
+
+    
+
+    
 }

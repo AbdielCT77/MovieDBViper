@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DetailMoviePresenter: DetailMovieViewToPresenterProtocol {
     var view: DetailMoviePresenterToViewProtocol?
@@ -16,6 +17,21 @@ class DetailMoviePresenter: DetailMovieViewToPresenterProtocol {
     
     func fetchMovieDetail(movieId: Int) {
         interactor?.fetchMovieDetail(movieId: movieId)
+    }
+    
+    func showDetailMovieController(
+        navigationController: UINavigationController,
+        movie: Int
+    ) {
+        interactor?.fetchMovieDetail(movieId: movie)
+    }
+    
+    func showDetailMovieFromSimilarController(
+        navigationController: UINavigationController, movie: Int
+    ) {
+        router?.showDetailMovieFromSimilarController(
+            navigationController: navigationController, movie: movie
+        )
     }
     
 }

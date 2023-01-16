@@ -11,4 +11,5 @@ target 'MovieAppViper' do
   pod 'Moya/RxSwift'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'SDWebImage', '~> 5.0'
+  pod 'youtube-ios-player-helper'
 end

@@ -31,6 +31,10 @@ extension NetworkService: TargetType {
         return "71b071ea5d1e233188a3f15f06566fed"
     }
     
+    public var appendResponse: String {
+        return "credits,external_ids,videos,similar"
+    }
+    
     public var path: String {
         switch self {
         case .genreMovie:
@@ -62,8 +66,11 @@ extension NetworkService: TargetType {
     
     public var task: Task {
         switch self {
-        case .genreMovie, .upComingMovie, .nowPlaying, .popularMovie, .detailMovie, .moviesCast:
+        case .genreMovie, .upComingMovie, .nowPlaying, .popularMovie, .moviesCast:
             return .requestParameters(parameters: ["api_key": apiKey], encoding: URLEncoding.default)
+        case .detailMovie:
+            return .requestParameters(
+                parameters: ["api_key": apiKey , "append_to_response": appendResponse], encoding: URLEncoding.default)
         case .nowPlayingMoviePaging(page: let paging), .trendingMoviePaging(page: let paging), .upComingMoviePaging(page: let paging):
             return .requestParameters(parameters: ["api_key": apiKey, "page": paging], encoding: URLEncoding.default)
         case .movieByGenres(genre: let genre):

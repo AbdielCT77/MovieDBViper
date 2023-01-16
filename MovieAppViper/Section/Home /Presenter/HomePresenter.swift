@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class HomePresenter: ViewToPresenterProtocol {
     var view: PresenterToViewProtocol?
@@ -14,6 +15,14 @@ class HomePresenter: ViewToPresenterProtocol {
     
     func fetchItemHome() {
         interactor?.fetchingHome()
+    }
+    
+    func showDetailMovieController(
+        navigationController: UINavigationController, movie: Int
+    ) {
+        router?.showDetailMovieController(
+            navigationController: navigationController, movie: movie
+        )
     }
 }
 

@@ -6,12 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ViewToPresenterProtocol: AnyObject {
     var view: PresenterToViewProtocol? {get set}
     var interactor: PresenterToInteractorProtocol? {get set}
     var router: PresenterToRouterProtocol? {get set}
     func fetchItemHome()
+    func showDetailMovieController(
+        navigationController: UINavigationController, movie: Int
+    )
 }
 
 protocol PresenterToViewProtocol: AnyObject {
@@ -24,6 +28,9 @@ protocol PresenterToViewProtocol: AnyObject {
 
 protocol PresenterToRouterProtocol: AnyObject {
     static func createModule()-> HomeViewController
+    func showDetailMovieController(
+        navigationController: UINavigationController, movie: Int
+    )
 }
 
 protocol PresenterToInteractorProtocol: AnyObject {

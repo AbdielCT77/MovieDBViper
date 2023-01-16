@@ -78,4 +78,8 @@ class NetworkManager: NetworkManagerProtocol {
     func fetchMoviesByGenrePaging(page: Int, genre: String) -> Single<MoviesModelResponse?> {
         return request(networkService: .movieByGenresPaging(genre: genre, page: page))
     }
+    
+    func fetchMovieDetail(movieId: Int) -> Single<DetailMovieResponse?> {
+        return request(networkService: .detailMovie(id: movieId))
+    }
 }

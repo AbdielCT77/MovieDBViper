@@ -38,6 +38,7 @@ class MoviesByGenresInteractor: MoviesByGenresPresenterToInteractorProtocol {
             self.moviesByGenrePagingResponse(response: response)
             self.presenter?.isLoading(isLoading: false)
         } onFailure: { error in
+            self.presenter?.isLoading(isLoading: false)
             guard let errorValue = error as? BaseError else { return }
             self.presenter?.fetchFailed(error: errorValue)
         }.disposed(by: bag)

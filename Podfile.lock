@@ -15,6 +15,7 @@ PODS:
     - SDWebImage/Core (= 5.13.1)
   - SDWebImage/Core (5.13.1)
   - SwiftyJSON (4.3.0)
+  - youtube-ios-player-helper (1.0.4)
 
 DEPENDENCIES:
   - Moya/RxSwift
@@ -22,6 +23,7 @@ DEPENDENCIES:
   - RxSwift
   - SDWebImage (~> 5.0)
   - SwiftyJSON (~> 4.0)
+  - youtube-ios-player-helper
 
 SPEC REPOS:
   trunk:
@@ -32,6 +34,7 @@ SPEC REPOS:
     - RxSwift
     - SDWebImage
     - SwiftyJSON
+    - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
@@ -41,7 +44,8 @@ SPEC CHECKSUMS:
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SDWebImage: fb26a455eeda4c7a55e4dcb6172dbb258af7a4ca
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
 
-PODFILE CHECKSUM: c87705c2d5c6b5e7c4a1dcddf307befd75c34a19
+PODFILE CHECKSUM: 7b86468315d2d0a3030be98a80ad1bf43535c4d4
 
 COCOAPODS: 1.11.3

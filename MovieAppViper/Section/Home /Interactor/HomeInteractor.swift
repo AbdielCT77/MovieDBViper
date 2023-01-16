@@ -31,6 +31,7 @@ class HomeInteractor: PresenterToInteractorProtocol {
             self.upcomingMovieResponse(response: upcomingResponse)
             self.presenter?.isLoading(isLoading: false)
         } onError: { error in
+            self.presenter?.isLoading(isLoading: false)
             guard let errorValue = error as? BaseError else { return }
             self.presenter?.fetchFailed(error: errorValue)
         }.disposed(by: bag)

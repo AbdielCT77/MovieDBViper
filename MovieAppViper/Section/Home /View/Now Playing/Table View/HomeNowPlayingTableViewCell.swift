@@ -18,6 +18,7 @@ class HomeNowPlayingTableViewCell: UITableViewCell {
     }
     var presenter: ViewToPresenterProtocol?
     var data: [MoviesModel] = []
+    var navigationController: UINavigationController?
     var timer : Timer?
     var index = 0
 
@@ -100,7 +101,7 @@ extension HomeNowPlayingTableViewCell: UICollectionViewDelegateFlowLayout,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-            return CGSize(width: UIScreen.main.bounds.width, height: 400)
+            return CGSize(width: 180, height: 290)
     }
     
     func collectionView(
@@ -119,7 +120,15 @@ extension HomeNowPlayingTableViewCell: UICollectionViewDelegateFlowLayout,
         return 0
     }
     
-    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        presenter?.showDetailMovieController(
+            navigationController: self.navigationController ?? UINavigationController(),
+            movie: data[indexPath.row].id ?? 0
+        )
+    }
     
     
 }

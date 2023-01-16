@@ -16,10 +16,9 @@ class HomeViewController: UIViewController {
     var dataMoviePlayingNow: [MoviesModel] = []
     var dataMovieUpcoming: [MoviesModel] = []
     var dataMoviePopular: [MoviesModel] = []
-    var dataMovieTrending: [MoviesModel] = []
     
     internal let menuSection: [HomeEnumSection] = [
-        .nowPlaying, .popularMovie, .upComingMovie, .trendingMovie
+        .nowPlaying, .popularMovie, .upComingMovie
     ]
     
     override func viewDidLoad() {
@@ -32,6 +31,14 @@ class HomeViewController: UIViewController {
         tableView.register(
             HomeNowPlayingTableViewCell.nib(),
             forCellReuseIdentifier: HomeNowPlayingTableViewCell.identifier
+        )
+        tableView.register(
+            HomePopularTableViewCell.nib(),
+            forCellReuseIdentifier: HomePopularTableViewCell.identifier
+        )
+        tableView.register(
+            HomeUpcomingTableViewCell.nib(),
+            forCellReuseIdentifier: HomeUpcomingTableViewCell.identifier
         )
         tableView.delegate = self
         tableView.dataSource = self
@@ -46,7 +53,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: PresenterToViewProtocol {
     func showUpcomingMovies(data: [MoviesModel]?) {
-        dataMoviePopular = data ?? []
+        dataMovieUpcoming = data ?? []
         tableView.reloadData()
     }
     
@@ -74,6 +81,10 @@ extension HomeViewController: PresenterToViewProtocol {
 
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return menuSection.count
+    }
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
@@ -81,12 +92,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch menuSection[section] {
         case .upComingMovie:
             return 1
-        case .trendingMovie:
-            return 1
         case .nowPlaying:
             return 1
         case .popularMovie:
-            return 1
+            return dataMoviePopular.count < 6 ? dataMoviePopular.count : 5
         }
     }
 
@@ -96,15 +105,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     ) -> UITableViewCell {
         switch menuSection[indexPath.section] {
         case .upComingMovie:
-            print("ini upcoming bor")
-            return UITableViewCell()
-        case .trendingMovie:
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: HomeTrendingMovieTableViewCell.identifier,
+                withIdentifier: HomeUpcomingTableViewCell.identifier,
                 for: indexPath
-            ) as! HomeTrendingMovieTableViewCell
+            ) as! HomeUpcomingTableViewCell
             cell.presenter = presenter
-            cell.configureData(model: dataMoviePlayingNow)
+            cell.navigationController = self.navigationController
+            cell.configureData(model: dataMovieUpcoming)
             return cell
         case .nowPlaying:
             let cell = tableView.dequeueReusableCell(
@@ -112,11 +119,19 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 for: indexPath
             ) as! HomeNowPlayingTableViewCell
             cell.presenter = presenter
+            cell.navigationController = self.navigationController
             cell.configureData(model: dataMoviePlayingNow)
             return cell
         case .popularMovie:
-            print("ini popular bor")
-            return UITableViewCell()
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: HomePopularTableViewCell.identifier,
+                for: indexPath
+            ) as! HomePopularTableViewCell
+            if dataMoviePopular.count > 0 {
+                cell.configureCell(model: dataMoviePopular[indexPath.row])
+                cell.navigationController = self.navigationController
+            }
+            return cell
         }
     }
     
@@ -127,10 +142,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch menuSection[section] {
         case .upComingMovie:
             return menuSection[section].title
-        case .trendingMovie:
-            return menuSection[section].title
         case .nowPlaying:
-            return ""
+            return menuSection[section].title
         case .popularMovie:
             return menuSection[section].title
         }
@@ -142,13 +155,21 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     ) -> CGFloat {
         switch menuSection[indexPath.section] {
         case .upComingMovie:
-            return 0
-        case .trendingMovie:
-            return 0
+            return 200
         case .nowPlaying:
             return 300
         case .popularMovie:
-            return 0
+            return 200
         }
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        presenter?.showDetailMovieController(
+            navigationController: self.navigationController ?? UINavigationController(),
+            movie: dataMoviePopular[indexPath.row].id ?? 0
+        )
     }
 }

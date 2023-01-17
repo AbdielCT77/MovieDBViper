@@ -84,7 +84,7 @@ extension HomeViewController: PresenterToViewProtocol {
     }
     
     func isLoading(isLoading: Bool) {
-        print("ini loading, ", isLoading)
+        isLoading ? self.loading() : self.hideLoading()
     }
     
     

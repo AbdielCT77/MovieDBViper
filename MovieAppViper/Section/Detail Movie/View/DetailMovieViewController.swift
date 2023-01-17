@@ -205,7 +205,12 @@ extension DetailMovieViewController: DetailMoviePresenterToViewProtocol {
     }
     
     func isLoading(isLoading: Bool) {
-        print("ini loading", isLoading)
+        if isLoading {
+            self.showSpinner(onView: self.view)
+        }
+        else {
+            self.removeSpinner()
+        }
     }
     
 }

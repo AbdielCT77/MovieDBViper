@@ -58,7 +58,7 @@ extension MoviesViewController: MoviesPresenterToViewProtocol {
     }
     
     func isLoading(isLoading: Bool) {
-        
+
     }
     
     
@@ -85,6 +85,16 @@ extension MoviesViewController: UITableViewDelegate,
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        presenter?.showDetailMovieController(
+            navigationController: navigationController ?? UINavigationController(),
+            movie: dataMovie[indexPath.row].id ?? 0
+        )
     }
     
     func scrollViewDidScroll(

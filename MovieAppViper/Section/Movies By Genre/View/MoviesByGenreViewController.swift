@@ -17,6 +17,8 @@ class MoviesByGenreViewController: UIViewController {
     var dataMovie: [MoviesModel] = []
     var genre: Genres?
     var currentPage: Int = 1
+    var totalPage: Int = 1
+    var isPageRefreshing:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +51,7 @@ extension MoviesByGenreViewController: MoviesByGenresPresenterToViewProtocol {
     func showMoviesPaging(data: [MoviesModel]?) {
         dataMovie += data ?? []
         collectionView.reloadData()
-//        collectionView.tableFooterView?.isHidden = true
+        isPageRefreshing = false
         
     }
     
@@ -58,7 +60,7 @@ extension MoviesByGenreViewController: MoviesByGenresPresenterToViewProtocol {
     }
     
     func isLoading(isLoading: Bool) {
-//        isLoading ? self.loading() : self.hideLoading()
+
     }
     
     
@@ -115,30 +117,30 @@ extension MoviesByGenreViewController: UICollectionViewDelegateFlowLayout,
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-//        presenter?.showDetailMovieController(
-//            navigationController: self.navigationController ?? UINavigationController(),
-//            movie: data[indexPath.row].id ?? 0
-//        )
+        presenter?.showDetailMovieController(
+            navigationController: self.navigationController ?? UINavigationController(),
+            movie: dataMovie[indexPath.row].id ?? 0
+        )
     }
     
-//    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let position = scrollView.contentOffset.y
-//        if position > (collectionView.contentSize.height-100-collectionView.frame.size.height){
-//            self.currentPage += 1
-//            let spinner = UIActivityIndicatorView(style: .large)
-//            spinner.frame = CGRect(
-//                x: 0.0, y: 0.0, width: self.collectionView.bounds.width, height: 70
-//            )
-//            spinner.startAnimating()
-////            if let enumHome = enumHome {
-////                presenter?.fetchMoviesPaging(homeEnum: enumHome, page: currentPage)
-////            }
-//            self.collectionView.tableFooterView = spinner
-//            self.collectionView.tableFooterView?.isHidden = false
-//        }
-//    }
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if(
+            self.collectionView.contentOffset.y >= (
+                self.collectionView.contentSize.height -
+                self.collectionView.bounds.size.height
+            )
+        ) {
+            if !isPageRefreshing {
+                isPageRefreshing = true
+                currentPage += 1
+                if let genre = genre {
+                    presenter?.fetchMoviesPaging(
+                        genre: genre, page: currentPage)
+                    
+                }
+            }
+        }
+    }
     
     
 }

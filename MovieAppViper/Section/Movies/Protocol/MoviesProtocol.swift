@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MoviesViewToPresenterProtocol: AnyObject {
     var view: MoviesPresenterToViewProtocol? {get set}
@@ -13,7 +14,9 @@ protocol MoviesViewToPresenterProtocol: AnyObject {
     var router: MoviesPresenterToRouterProtocol? {get set}
     func fetchMovies(homeEnum: HomeEnumSection)
     func fetchMoviesPaging(homeEnum: HomeEnumSection, page: Int)
-    
+    func showDetailMovieController(
+        navigationController: UINavigationController, movie: Int
+    )
 }
 
 protocol MoviesPresenterToViewProtocol: AnyObject {
@@ -25,6 +28,9 @@ protocol MoviesPresenterToViewProtocol: AnyObject {
 
 protocol MoviesPresenterToRouterProtocol: AnyObject {
     static func createModule(homeEnum: HomeEnumSection)-> MoviesViewController
+    func showDetailMovieController(
+        navigationController: UINavigationController, movie: Int
+    )
 }
 
 protocol MoviesPresenterToInteractorProtocol: AnyObject {

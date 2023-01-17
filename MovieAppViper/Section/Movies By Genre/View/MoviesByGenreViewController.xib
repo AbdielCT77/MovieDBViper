@@ -19,24 +19,29 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xDF-HZ-2kf">
-                    <rect key="frame" x="10" y="59" width="373" height="759"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hVA-2N-WrD">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="97x-A7-O5R">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xDF-HZ-2kf">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hVA-2N-WrD">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xDF-HZ-2kf" secondAttribute="trailing" constant="10" id="cdC-Q7-YNL"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="xDF-HZ-2kf" secondAttribute="bottom" id="mcK-YK-xyT"/>
-                <constraint firstItem="xDF-HZ-2kf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="o4A-oV-eJm"/>
-                <constraint firstItem="xDF-HZ-2kf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ySr-ce-9pP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="97x-A7-O5R" secondAttribute="trailing" id="Ke2-KZ-3vc"/>
+                <constraint firstItem="97x-A7-O5R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NjF-QP-HNY"/>
+                <constraint firstItem="97x-A7-O5R" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Siv-6s-fEo"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="97x-A7-O5R" secondAttribute="bottom" id="em8-TQ-ofD"/>
             </constraints>
             <point key="canvasLocation" x="61" y="21"/>
         </view>

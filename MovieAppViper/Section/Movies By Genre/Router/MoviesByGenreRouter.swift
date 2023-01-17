@@ -27,5 +27,12 @@ class MoviesByGenresRouter: MoviesByGenresPresenterToRouterProtocol {
         return controller
     }
     
+    func showDetailMovieController(
+        navigationController: UINavigationController, movie: Int
+    ) {
+        let movieModule = DetailMovieRouter.createModule(movieId: movie)
+        navigationController.pushViewController(movieModule, animated: true)
+    }
+    
 }
 

@@ -88,7 +88,7 @@ struct SpokenLanguage: Codable {
 
 // MARK: - ExternalIDS
 struct ExternalIDS: Codable {
-    let imdbId, facebookId, instagramId, twitterId: String?
+    let imdbId, facebookId, instagramId, twitterId, wikidataID: String?
 }
 
 // MARK: - Videos

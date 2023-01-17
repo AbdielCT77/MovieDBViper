@@ -14,6 +14,9 @@ protocol MoviesByGenresViewToPresenterProtocol: AnyObject {
     var router: MoviesByGenresPresenterToRouterProtocol? {get set}
     func fetchMovies(genre: Genres)
     func fetchMoviesPaging(genre: Genres,page: Int)
+    func showDetailMovieController(
+        navigationController: UINavigationController, movie: Int
+    )
     
 }
 
@@ -26,6 +29,9 @@ protocol MoviesByGenresPresenterToViewProtocol: AnyObject {
 
 protocol MoviesByGenresPresenterToRouterProtocol: AnyObject {
     static func createModule(genre: Genres)-> MoviesByGenreViewController
+    func showDetailMovieController(
+        navigationController: UINavigationController, movie: Int
+    )
 }
 
 protocol MoviesByGenresPresenterToInteractorProtocol: AnyObject {

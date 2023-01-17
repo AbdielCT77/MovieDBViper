@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MoviesPresenter: MoviesViewToPresenterProtocol {
     var view: MoviesPresenterToViewProtocol?
@@ -18,6 +19,14 @@ class MoviesPresenter: MoviesViewToPresenterProtocol {
     
     func fetchMoviesPaging(homeEnum: HomeEnumSection, page: Int) {
         interactor?.fetchingMoviesPaging(homeEnum: homeEnum, page: page)
+    }
+    
+    func showDetailMovieController(
+        navigationController: UINavigationController, movie: Int
+    ) {
+        router?.showDetailMovieController(
+            navigationController: navigationController, movie: movie
+        )
     }
     
 }

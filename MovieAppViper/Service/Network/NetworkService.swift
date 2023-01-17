@@ -14,7 +14,7 @@ enum NetworkService {
     case nowPlaying
     case popularMovie
     case nowPlayingMoviePaging(page: Int)
-    case trendingMoviePaging(page: Int)
+    case popularMoviePaging(page: Int)
     case upComingMoviePaging(page: Int)
     case detailMovie(id: Int)
     case movieByGenres(genre: String)
@@ -32,7 +32,7 @@ extension NetworkService: TargetType {
     }
     
     public var appendResponse: String {
-        return "credits,external_ids,videos,similar"
+        return "credits,external_ids,videos,similar,reviews"
     }
     
     public var path: String {
@@ -41,11 +41,11 @@ extension NetworkService: TargetType {
             return "genre/movie/list"
         case .trendingMovie:
             return ""
-        case .upComingMovie:
+        case .upComingMovie, .upComingMoviePaging:
             return "movie/upcoming"
-        case .nowPlaying, .nowPlayingMoviePaging, .trendingMoviePaging, .upComingMoviePaging:
+        case .nowPlaying, .nowPlayingMoviePaging:
             return "movie/now_playing"
-        case .popularMovie:
+        case .popularMovie , .popularMoviePaging:
             return "movie/popular"
         case .detailMovie(id: let id):
             return "movie/\(id)"
@@ -71,7 +71,7 @@ extension NetworkService: TargetType {
         case .detailMovie:
             return .requestParameters(
                 parameters: ["api_key": apiKey , "append_to_response": appendResponse], encoding: URLEncoding.default)
-        case .nowPlayingMoviePaging(page: let paging), .trendingMoviePaging(page: let paging), .upComingMoviePaging(page: let paging):
+        case .nowPlayingMoviePaging(page: let paging), .popularMoviePaging(page: let paging), .upComingMoviePaging(page: let paging):
             return .requestParameters(parameters: ["api_key": apiKey, "page": paging], encoding: URLEncoding.default)
         case .movieByGenres(genre: let genre):
             return .requestParameters(parameters: ["api_key": apiKey,"with_genres": genre], encoding: URLEncoding.default)

@@ -85,6 +85,45 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return menuSection.count
     }
+    
+    func tableView(
+        _ tableView: UITableView,
+        viewForHeaderInSection section: Int
+    ) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(
+            x: 0, y: 0,
+            width: tableView.frame.width, height: 50)
+        )
+        
+        let label = UILabel()
+        label.frame = CGRect.init(
+            x: 10, y: 5,
+            width: headerView.frame.width/2, height: headerView.frame.height/2
+        )
+        label.text = menuSection[section].title
+        label.font = .systemFont(ofSize: 16)
+        label.textColor = .black
+        
+        let seeAll = UILabel()
+        seeAll.frame = CGRect.init(
+            x: headerView.frame.width - 80, y: 5,
+            width: headerView.frame.width/2, height: headerView.frame.height/2
+        )
+        seeAll.text = "See All"
+        seeAll.font = .systemFont(ofSize: 14)
+        seeAll.textColor = .lightGray
+        seeAll.isUserInteractionEnabled = true
+        seeAll.tag = section
+        
+        headerView.backgroundColor = .white
+        
+        headerView.addSubview(label)
+        headerView.addSubview(seeAll)
+        
+        onClickSeeAll(view: seeAll)
+        return headerView
+    }
+    
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
@@ -134,19 +173,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
-    
+
     func tableView(
         _ tableView: UITableView,
-        titleForHeaderInSection section: Int
-    ) -> String? {
-        switch menuSection[section] {
-        case .upComingMovie:
-            return menuSection[section].title
-        case .nowPlaying:
-            return menuSection[section].title
-        case .popularMovie:
-            return menuSection[section].title
-        }
+        heightForHeaderInSection section: Int
+    ) -> CGFloat {
+        return 50
     }
 
     func tableView(
@@ -170,6 +202,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         presenter?.showDetailMovieController(
             navigationController: self.navigationController ?? UINavigationController(),
             movie: dataMoviePopular[indexPath.row].id ?? 0
+        )
+    }
+    
+    private func onClickSeeAll(view: UIView) {
+        let tap = UITapGestureRecognizer(
+            target: self, action: #selector(seeAlltapped)
+        )
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func seeAlltapped(sender: UITapGestureRecognizer) {
+        let index = sender.view?.tag
+        presenter?.showMovieController(
+            navigationController:  navigationController ?? UINavigationController(),
+            enumHome: menuSection[index ?? 0]
         )
     }
 }

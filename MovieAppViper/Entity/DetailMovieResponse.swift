@@ -19,19 +19,20 @@ struct DetailMovieResponse: Codable {
     let imdbID, originalLanguage, originalTitle, overview: String?
     let popularity: Double?
     let posterPath: String?
-    let productionCompanies: [ProductionCompany]
-    let productionCountries: [ProductionCountry]
-    let releaseDate: String
-    let revenue, runtime: Int
+    let productionCompanies: [ProductionCompany]?
+    let productionCountries: [ProductionCountry]?
+    let releaseDate: String?
+    let revenue, runtime: Int?
     let spokenLanguages: [SpokenLanguage]
-    let status, tagline, title: String
-    let video: Bool
-    let voteAverage: Double
-    let voteCount: Int
+    let status, tagline, title: String?
+    let video: Bool?
+    let voteAverage: Double?
+    let voteCount: Int?
     let credits: Credits?
     let externalIds: ExternalIDS?
     let videos: Videos?
     let similar: MoviesModelResponse?
+    let reviews: Reviews?
 
 }
 
@@ -42,7 +43,7 @@ struct Credits: Codable {
 
 // MARK: - Cast
 struct Cast: Codable {
-    let adult: Bool
+    let adult: Bool?
     let gender, id: Int?
     let knownForDepartment: String?
     let name, originalName: String?
@@ -60,8 +61,8 @@ struct Cast: Codable {
 
 // MARK: - BelongsToCollection
 struct BelongsToCollection: Codable {
-    let id: Int
-    let name: String
+    let id: Int?
+    let name: String?
     let posterPath, backdropPath: String?
 }
 
@@ -105,5 +106,27 @@ struct ResultVideos : Codable {
     let type: String?
     let official: Bool?
     let publishedAt, id: String?
+
+}
+
+// MARK: - Reviews
+struct Reviews: Codable {
+    let page: Int?
+    let results: [ReviewsResult]?
+    let totalPages, totalResults: Int?
+}
+
+// MARK: - ReviewsResult
+struct ReviewsResult: Codable {
+    let author: String?
+    let authorDetails: AuthorDetails?
+    let content, createdAt, id, updatedAt: String?
+    let url: String?
+}
+
+// MARK: - AuthorDetails
+struct AuthorDetails: Codable {
+    let name, username, avatarPath: String?
+    let rating: Int?
 
 }

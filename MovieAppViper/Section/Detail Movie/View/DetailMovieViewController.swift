@@ -29,9 +29,10 @@ class DetailMovieViewController: UIViewController {
     var presenter: DetailMovieViewToPresenterProtocol?
     var movieId: Int?
     private var youtubeKey = ""
-    internal let detailSection: [DetailEnumSection] = [
-        .cast, .similarMovies
+    internal var detailSection: [DetailEnumSection] = [
+        .review, .cast, .similarMovies
     ]
+    private var dataDetailReviewCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,10 @@ class DetailMovieViewController: UIViewController {
     }
     
     private func setupCollectionView(){
+        tableView.register(
+            DetailMovieReviewTableViewCell.nib(),
+            forCellReuseIdentifier: DetailMovieReviewTableViewCell.identifier
+        )
         tableView.register(
             DetailMovieCastTableViewCell.nib(),
             forCellReuseIdentifier: DetailMovieCastTableViewCell.identifier
@@ -63,7 +68,7 @@ class DetailMovieViewController: UIViewController {
         guard let dataDetail = dataDetail else { return }
         self.movieTitleLbl.text = dataDetail.title
         self.movieDescLbl.text = dataDetail.overview
-        self.ratingLbl.text = "\(dataDetail.voteAverage)"
+        self.ratingLbl.text = "\(dataDetail.voteAverage ?? 0)"
         let genres = dataDetail.genres ?? []
         playTrailerBtn.addTarget(
             self,
@@ -189,6 +194,7 @@ extension DetailMovieViewController: DetailMoviePresenterToViewProtocol {
     func showMovieDetail(data: DetailMovieResponse?) {
         guard let detail = data else { return }
         dataDetail = detail
+        dataDetailReviewCount = detail.reviews?.totalResults ?? 0
         setUI()
         tableView.reloadData()
         tableViewHeight.constant = tableView.contentSize.height
@@ -241,6 +247,8 @@ extension DetailMovieViewController: UITableViewDelegate,
             return 1
         case .similarMovies:
             return 1
+        case .review:
+            return dataDetailReviewCount > 0 ? 1 : 0
         }
     }
     
@@ -265,6 +273,15 @@ extension DetailMovieViewController: UITableViewDelegate,
             cell.navigationController = self.navigationController
             cell.presenter = presenter
             return cell
+        case .review:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: DetailMovieReviewTableViewCell.identifier,
+                for: indexPath
+            ) as! DetailMovieReviewTableViewCell
+            cell.configureDetailMovie(
+                review: dataDetail?.reviews?.results?[indexPath.row]
+            )
+            return cell
         }
     }
     
@@ -277,6 +294,19 @@ extension DetailMovieViewController: UITableViewDelegate,
             return detailSection[section].title
         case .similarMovies:
             return detailSection[section].title
+        case .review:
+            return detailSection[section].title
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch detailSection[section] {
+        case .cast:
+            return 30
+        case .similarMovies:
+            return 30
+        case .review:
+            return dataDetailReviewCount > 0 ? 30 : 0
         }
     }
     
@@ -289,6 +319,8 @@ extension DetailMovieViewController: UITableViewDelegate,
             return 190
         case .similarMovies:
             return 190
+        case .review:
+            return dataDetailReviewCount > 0 ? 190 : 0
         }
     }
 

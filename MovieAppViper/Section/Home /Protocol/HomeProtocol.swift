@@ -16,6 +16,9 @@ protocol ViewToPresenterProtocol: AnyObject {
     func showDetailMovieController(
         navigationController: UINavigationController, movie: Int
     )
+    func showMovieController(
+        navigationController: UINavigationController, enumHome: HomeEnumSection
+    )
 }
 
 protocol PresenterToViewProtocol: AnyObject {
@@ -30,6 +33,9 @@ protocol PresenterToRouterProtocol: AnyObject {
     static func createModule()-> HomeViewController
     func showDetailMovieController(
         navigationController: UINavigationController, movie: Int
+    )
+    func showMovieController(
+        navigationController: UINavigationController, enumHome: HomeEnumSection
     )
 }
 

@@ -8,10 +8,12 @@
 import Foundation
 
 enum DetailEnumSection {
-    case cast, similarMovies
+    case review, cast, similarMovies
     
     var title : String {
         switch self {
+        case .review:
+            return "Review"
         case .cast:
             return "Cast"
         case .similarMovies:

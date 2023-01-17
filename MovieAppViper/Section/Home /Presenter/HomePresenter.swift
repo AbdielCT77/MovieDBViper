@@ -24,6 +24,15 @@ class HomePresenter: ViewToPresenterProtocol {
             navigationController: navigationController, movie: movie
         )
     }
+    
+    func showMovieController(
+        navigationController: UINavigationController, enumHome: HomeEnumSection
+    ) {
+        router?.showMovieController(
+            navigationController: navigationController, enumHome: enumHome
+        )
+    }
+    
 }
 
 extension HomePresenter: InteractorToPresenterProtocol {

@@ -10,14 +10,15 @@ import UIKit
 
 class MoviesByGenresRouter: MoviesByGenresPresenterToRouterProtocol {
     
-    static func createModule() -> MoviesByGenreViewController {
+    static func createModule(genre: Genres) -> MoviesByGenreViewController {
         let controller = MoviesByGenreViewController()
         let presenter: MoviesByGenresViewToPresenterProtocol & MoviesByGenresInteractorToPresenterProtocol = MoviesByGenresPresenter()
         let interactor: MoviesByGenresPresenterToInteractorProtocol = MoviesByGenresInteractor()
         let router:MoviesByGenresPresenterToRouterProtocol = MoviesByGenresRouter()
         
         controller.presenter = presenter
-        controller.title = "Movie DB"
+        controller.title = genre.name
+        controller.genre = genre
         presenter.view = controller
         presenter.interactor = interactor
         presenter.router = router

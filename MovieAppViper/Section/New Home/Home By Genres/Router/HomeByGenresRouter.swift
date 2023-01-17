@@ -27,7 +27,7 @@ class HomeByGenresRouter: HomeByGenresPresenterToRouterProtocol {
     func movePageToMoviesList(
         navigationController: UINavigationController, genre: Genres
     ) {
-        let movieModule = MoviesByGenresRouter.createModule()
+        let movieModule = MoviesByGenresRouter.createModule(genre: genre)
         movieModule.genre = genre
         navigationController.pushViewController(movieModule, animated: true)
     }

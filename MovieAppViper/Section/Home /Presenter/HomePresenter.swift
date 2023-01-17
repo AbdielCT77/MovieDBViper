@@ -33,9 +33,21 @@ class HomePresenter: ViewToPresenterProtocol {
         )
     }
     
+    func showMovieByGenreController(
+        navigationController: UINavigationController, genre: Genres
+    ) {
+        router?.showMovieByGenreController(
+            navigationController: navigationController, genre: genre
+        )
+    }
+    
 }
 
 extension HomePresenter: InteractorToPresenterProtocol {
+    func showGenres(data: [Genres]?) {
+        view?.showGenres(data: data)
+    }
+    
     func fetchedUpcomingMoviesSuccess(data: [MoviesModel]?) {
         view?.showUpcomingMovies(data: data)
     }

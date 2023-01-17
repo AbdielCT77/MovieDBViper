@@ -8,7 +8,7 @@
 import Foundation
 
 enum HomeEnumSection {
-    case upComingMovie, nowPlaying, popularMovie
+    case upComingMovie, nowPlaying, popularMovie, genre
     
     var title : String {
         switch self {
@@ -18,6 +18,8 @@ enum HomeEnumSection {
             return "Now Playing"
         case .popularMovie:
             return "Popular Movies"
+        case .genre:
+            return "Genres"
         }
     }
 }

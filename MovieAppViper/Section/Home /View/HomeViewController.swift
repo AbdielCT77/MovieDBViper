@@ -16,9 +16,10 @@ class HomeViewController: UIViewController {
     var dataMoviePlayingNow: [MoviesModel] = []
     var dataMovieUpcoming: [MoviesModel] = []
     var dataMoviePopular: [MoviesModel] = []
+    var dataGenres: [Genres] = []
     
     internal let menuSection: [HomeEnumSection] = [
-        .nowPlaying, .popularMovie, .upComingMovie
+        .nowPlaying, .popularMovie, .upComingMovie, .genre
     ]
     
     override func viewDidLoad() {
@@ -40,9 +41,15 @@ class HomeViewController: UIViewController {
             HomeUpcomingTableViewCell.nib(),
             forCellReuseIdentifier: HomeUpcomingTableViewCell.identifier
         )
+        tableView.register(
+            HomeGenreTableViewCell.nib(),
+            forCellReuseIdentifier: HomeGenreTableViewCell.identifier
+        )
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+//        tableView.estimatedRowHeight = view.frame.height
+//        tableView.rowHeight = UITableView.automaticDimension
     }
     
     private func fetchPresenter(){
@@ -52,6 +59,11 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: PresenterToViewProtocol {
+    func showGenres(data: [Genres]?) {
+        dataGenres = data ?? []
+        tableView.reloadData()
+    }
+    
     func showUpcomingMovies(data: [MoviesModel]?) {
         dataMovieUpcoming = data ?? []
         tableView.reloadData()
@@ -118,9 +130,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.backgroundColor = .white
         
         headerView.addSubview(label)
-        headerView.addSubview(seeAll)
+        if !(menuSection[section] == .genre) {
+            headerView.addSubview(seeAll)
+            onClickSeeAll(view: seeAll)
+        }
         
-        onClickSeeAll(view: seeAll)
         return headerView
     }
     
@@ -135,6 +149,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return 1
         case .popularMovie:
             return dataMoviePopular.count < 6 ? dataMoviePopular.count : 5
+        case .genre:
+            return 1
         }
     }
 
@@ -171,6 +187,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.navigationController = self.navigationController
             }
             return cell
+        case .genre:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: HomeGenreTableViewCell.identifier,
+                for: indexPath
+            ) as! HomeGenreTableViewCell
+            cell.configureData(genre: dataGenres)
+            cell.presenter = presenter
+            cell.navigationController = self.navigationController
+            return cell
         }
     }
 
@@ -192,8 +217,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return 300
         case .popularMovie:
             return 200
+        case .genre:
+            return 700
         }
     }
+    
+//    func tableView(
+//        _ tableView: UITableView,
+//        heightForRowAt indexPath: IndexPath
+//    ) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
     
     func tableView(
         _ tableView: UITableView,

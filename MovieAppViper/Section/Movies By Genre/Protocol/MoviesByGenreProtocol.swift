@@ -25,7 +25,7 @@ protocol MoviesByGenresPresenterToViewProtocol: AnyObject {
 }
 
 protocol MoviesByGenresPresenterToRouterProtocol: AnyObject {
-    static func createModule()-> MoviesByGenreViewController
+    static func createModule(genre: Genres)-> MoviesByGenreViewController
 }
 
 protocol MoviesByGenresPresenterToInteractorProtocol: AnyObject {

@@ -50,6 +50,7 @@ class MoviesInteractor: MoviesPresenterToInteractorProtocol {
                 guard let errorValue = error as? BaseError else { return }
                 self.presenter?.fetchFailed(error: errorValue)
             }.disposed(by: bag)
+        case .genre: break
         }
     }
     
@@ -89,6 +90,8 @@ class MoviesInteractor: MoviesPresenterToInteractorProtocol {
                 guard let errorValue = error as? BaseError else { return }
                 self.presenter?.fetchFailed(error: errorValue)
             }.disposed(by: bag)
+        case .genre: break
+            
         }
 
     }

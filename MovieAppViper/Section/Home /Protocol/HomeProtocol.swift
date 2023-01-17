@@ -19,12 +19,16 @@ protocol ViewToPresenterProtocol: AnyObject {
     func showMovieController(
         navigationController: UINavigationController, enumHome: HomeEnumSection
     )
+    func showMovieByGenreController(
+        navigationController: UINavigationController, genre: Genres
+    )
 }
 
 protocol PresenterToViewProtocol: AnyObject {
     func showUpcomingMovies(data: [MoviesModel]?)
     func showNowPlayingMovie(data: [MoviesModel]?)
     func showPopularMoviesData(data: [MoviesModel]?)
+    func showGenres(data: [Genres]?)
     func showError(error: BaseError)
     func isLoading(isLoading: Bool)
 }
@@ -37,6 +41,9 @@ protocol PresenterToRouterProtocol: AnyObject {
     func showMovieController(
         navigationController: UINavigationController, enumHome: HomeEnumSection
     )
+    func showMovieByGenreController(
+        navigationController: UINavigationController, genre: Genres
+    )
 }
 
 protocol PresenterToInteractorProtocol: AnyObject {
@@ -48,6 +55,7 @@ protocol InteractorToPresenterProtocol: AnyObject {
     func fetchedUpcomingMoviesSuccess(data: [MoviesModel]?)
     func showNowPlayingMovie(data: [MoviesModel]?)
     func showPopularMoviesData(data: [MoviesModel]?)
+    func showGenres(data: [Genres]?)
     func fetchFailed(error: BaseError)
     func isLoading(isLoading: Bool)
 }

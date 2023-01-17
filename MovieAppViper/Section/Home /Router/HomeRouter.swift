@@ -38,4 +38,12 @@ class HomeRouter: PresenterToRouterProtocol{
         let movieList = MoviesRouter.createModule(homeEnum: enumHome)
         navigationController.pushViewController(movieList, animated: true)
     }
+    
+    func showMovieByGenreController(
+        navigationController: UINavigationController, genre: Genres
+    ) {
+        let movieGenreList = MoviesByGenresRouter.createModule(genre: genre)
+        navigationController.pushViewController(movieGenreList, animated: true)
+    }
+    
 }

@@ -22,13 +22,15 @@ class HomeInteractor: PresenterToInteractorProtocol {
         Observable.zip(
             service.fetchPlayingNowMovie().asObservable(),
             service.fetchPopularMovie().asObservable().asObservable(),
-            service.fetchUpcomingMovie().asObservable()
+            service.fetchUpcomingMovie().asObservable(),
+            service.fetchGenres().asObservable()
         )
         .observe(on: MainScheduler.instance)
-        .subscribe { (nowPlayingResponse, popularResponse, upcomingResponse) in
+        .subscribe { (nowPlayingResponse, popularResponse, upcomingResponse, genreResponse) in
             self.playingNowResponse(response: nowPlayingResponse)
             self.popularMovieResponse(response: popularResponse)
             self.upcomingMovieResponse(response: upcomingResponse)
+            self.genreResponse(response: genreResponse)
             self.presenter?.isLoading(isLoading: false)
         } onError: { error in
             self.presenter?.isLoading(isLoading: false)
@@ -49,6 +51,11 @@ class HomeInteractor: PresenterToInteractorProtocol {
     private func popularMovieResponse(response: MoviesModelResponse?) {
         self.presenter?.showPopularMoviesData(data: response?.results)
     }
+    
+    private func genreResponse(response: GenresModelResponse?) {
+        self.presenter?.showGenres(data: response?.genres)
+    }
+    
     
     
 }

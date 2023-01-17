@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeGenreCollectionViewCell" customModule="MovieAppViper" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="117" height="104"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="117" height="104"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qs9-9A-yxk">
+                        <rect key="frame" x="0.0" y="59" width="117" height="45"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkp-75-haS">
+                                <rect key="frame" x="0.0" y="11.666666666666671" width="117" height="22"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                <color key="textColor" red="0.08235294118" green="0.1650000066" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jkp-75-haS" firstAttribute="centerX" secondItem="Qs9-9A-yxk" secondAttribute="centerX" id="1O3-Hk-6hO"/>
+                            <constraint firstItem="jkp-75-haS" firstAttribute="leading" secondItem="Qs9-9A-yxk" secondAttribute="leading" id="Xj9-Yj-Tcf"/>
+                            <constraint firstItem="jkp-75-haS" firstAttribute="centerY" secondItem="Qs9-9A-yxk" secondAttribute="centerY" id="e8V-9Q-7pO"/>
+                            <constraint firstAttribute="trailing" secondItem="jkp-75-haS" secondAttribute="trailing" id="tFO-QE-33j"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Qs9-9A-yxk" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" id="EH2-1V-83S"/>
+                <constraint firstItem="Qs9-9A-yxk" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="QtO-Ta-XJl"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="Qs9-9A-yxk" secondAttribute="leading" id="emG-M1-lBP"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="Qs9-9A-yxk" secondAttribute="top" id="wfM-MC-W8c"/>
+            </constraints>
+            <size key="customSize" width="117" height="104"/>
+            <connections>
+                <outlet property="genreTitle" destination="jkp-75-haS" id="FmO-6u-Qbm"/>
+            </connections>
+            <point key="canvasLocation" x="86.25954198473282" y="38.732394366197184"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

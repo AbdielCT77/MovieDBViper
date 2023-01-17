@@ -48,4 +48,52 @@ extension UIViewController {
     func hideLoading(){
         dismiss(animated: false, completion: nil)
     }
+    
+    func showCustomBackButton(
+        imageName: String = "back",
+        action: Selector? = nil,
+        showLeftMargin: Bool = true
+    ) {
+        let backButtonSize: CGFloat = 44
+        let backButton = UIButton(frame: CGRect(
+            x: 0, y: 0, width: backButtonSize, height: backButtonSize
+        ))
+        
+        backButton.setImage(UIImage(named: imageName), for: .normal)
+        
+        let backImageWidth = backButton.imageView?.intrinsicContentSize.width ?? 0
+        
+        if (showLeftMargin) {
+            backButton.imageEdgeInsets = UIEdgeInsets(
+                top: 0,
+                left: -(backButtonSize - backImageWidth),
+                bottom: 0,
+                right: 0
+            )
+        }
+        
+        backButton.addTarget(self, action: {
+            if let _action = action {
+                return _action
+            } else {
+                return #selector(didTapBack(_:))
+            }
+        }(), for: .touchUpInside)
+        
+        navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(customView: backButton)
+        ]
+    }
+    
+    @objc private func didTapBack(_ sender: Any) {
+        dismissOrPopViewController()
+    }
+    
+    func dismissOrPopViewController(completion: (() -> Void)? = nil) {
+        guard let _navigationController = navigationController else {
+            return dismiss(animated: true, completion: completion)
+        }
+        
+        _navigationController.popViewController(animated: true)
+    }
 }

@@ -26,6 +26,7 @@ class MoviesViewController: UIViewController {
     }
     
     private func setUI(){
+        showCustomBackButton()
         tableView.register(
             MovieTableViewCell.nib(),
             forCellReuseIdentifier: MovieTableViewCell.identifier

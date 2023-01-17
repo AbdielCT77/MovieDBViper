@@ -27,6 +27,7 @@ class MoviesByGenreViewController: UIViewController {
     }
     
     private func setUI(){
+        showCustomBackButton()
         collectionView.register(
             MoviesByGenreCollectionViewCell.nib(),
             forCellWithReuseIdentifier: MoviesByGenreCollectionViewCell.identifier

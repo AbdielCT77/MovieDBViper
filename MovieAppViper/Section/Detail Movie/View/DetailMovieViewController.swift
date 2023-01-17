@@ -15,6 +15,7 @@ class DetailMovieViewController: UIViewController {
     @IBOutlet weak var backDropImage: UIImageView!
     @IBOutlet weak var backdropImageView: UIView!
     @IBOutlet weak var playTrailerBtn: UIButton!
+    @IBOutlet weak var trailerStackView: UIStackView!
     @IBOutlet weak var playerVIew: YTPlayerView!
     @IBOutlet weak var movieTitleLbl: UILabel!
     @IBOutlet weak var genreLbl: UILabel!
@@ -36,6 +37,7 @@ class DetailMovieViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showCustomBackButton()
         setupCollectionView()
         fetchDetail()
     }
@@ -93,6 +95,8 @@ class DetailMovieViewController: UIViewController {
                 }
             }
         }
+        
+        trailerStackView.isHidden = youtubeKey == ""
         
         for i in 0..<socialMediaButton.count {
             if i == 0 { //link

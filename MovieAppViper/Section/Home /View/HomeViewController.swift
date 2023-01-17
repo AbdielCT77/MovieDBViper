@@ -48,8 +48,6 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-//        tableView.estimatedRowHeight = view.frame.height
-//        tableView.rowHeight = UITableView.automaticDimension
     }
     
     private func fetchPresenter(){
@@ -185,6 +183,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             if dataMoviePopular.count > 0 {
                 cell.configureCell(model: dataMoviePopular[indexPath.row])
                 cell.navigationController = self.navigationController
+                cell.selectionStyle = .none
             }
             return cell
         case .genre:
@@ -221,13 +220,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return 700
         }
     }
-    
-//    func tableView(
-//        _ tableView: UITableView,
-//        heightForRowAt indexPath: IndexPath
-//    ) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
     
     func tableView(
         _ tableView: UITableView,

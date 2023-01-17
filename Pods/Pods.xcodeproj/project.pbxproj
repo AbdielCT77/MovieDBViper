@@ -26,7 +26,7 @@
 		07A41F67B40B3C6C6C3DB862F1F633F8 /* SDWebImageManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E2D69ED0BA7050DAB02DE358CFFBFC83 /* SDWebImageManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07FEBB2118365A66B0698CC092B722E1 /* Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E58682454301AC4B91F6FD7FCCBB5 /* Reactive.swift */; };
 		08878CAE4458C3760827A27A1206D3DB /* RxRelay-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA247335C8D3079D5EFCBFE09A6CCF /* RxRelay-dummy.m */; };
-		08E06C696103054C4B32302B72F87F9B /* youtube-ios-player-helper-Assets in Resources */ = {isa = PBXBuildFile; fileRef = D674200BB0575198145B5455CF13275F /* youtube-ios-player-helper-Assets */; };
+		08E06C696103054C4B32302B72F87F9B /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D674200BB0575198145B5455CF13275F /* Assets.bundle */; };
 		0907413AF1BF312948C6CA8289CE29AE /* ControlProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD014185DC8CA4A2D85204D331485B80 /* ControlProperty.swift */; };
 		09E8DFE97223BF2E68814D5B83741BC5 /* NetworkActivityPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C6A551117028CECE14F774B088B4F /* NetworkActivityPlugin.swift */; };
 		0A408DB8F97376D34E7FFE857309E931 /* Moya+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A7A9B0723B35144957214FF996DBA1 /* Moya+Alamofire.swift */; };
@@ -814,7 +814,7 @@
 		56822A43831850505CD5CBF943F0C143 /* SDImageTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageTransformer.h; path = SDWebImage/Core/SDImageTransformer.h; sourceTree = "<group>"; };
 		576533C5AE5DF206697DD00E4AE427A5 /* ReplayRelay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplayRelay.swift; path = RxRelay/ReplayRelay.swift; sourceTree = "<group>"; };
 		5937453671EECE5A2FAAB01086EA63E6 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = RxRelay/Utils.swift; sourceTree = "<group>"; };
-		59E92B62659DF1CA6DD6CCF5AEBFD5C0 /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; includeInIndex = 1; name = "YTPlayerView-iframe-player.html"; path = "Sources/Assets/YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
+		59E92B62659DF1CA6DD6CCF5AEBFD5C0 /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = "YTPlayerView-iframe-player.html"; path = "Sources/Assets/YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
 		59EB0EC6CEE0D4F86A98AA2C3370509A /* RxTableViewDataSourceType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxTableViewDataSourceType.swift; path = RxCocoa/iOS/Protocols/RxTableViewDataSourceType.swift; sourceTree = "<group>"; };
 		5A1F0DA7A3324DB4D7AE9227FBC3215F /* OperationQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "OperationQueue+Alamofire.swift"; path = "Source/OperationQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		5AC8E654E5CACED0EB07D76C9222A4F6 /* UIImage+MemoryCacheCost.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MemoryCacheCost.m"; path = "SDWebImage/Core/UIImage+MemoryCacheCost.m"; sourceTree = "<group>"; };
@@ -970,7 +970,7 @@
 		9C39E0B1D8F86B3635E17FAF8E0F3374 /* Optional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Optional.swift; path = RxSwift/Observables/Optional.swift; sourceTree = "<group>"; };
 		9D67FFE5A575022C0A90D9A9B0D35481 /* Concurrency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Concurrency.swift; path = Source/Concurrency.swift; sourceTree = "<group>"; };
 		9D72A6B3F0C35A15888562A9AB8C9630 /* UISegmentedControl+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UISegmentedControl+Rx.swift"; path = "RxCocoa/iOS/UISegmentedControl+Rx.swift"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DE344A14ADB034D8749EC4D6C105FED /* Image.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Sources/Moya/Image.swift; sourceTree = "<group>"; };
 		9E948CD1CA2F73D9668F2CB5B0FF361E /* SDWebImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImage.h; path = WebImage/SDWebImage.h; sourceTree = "<group>"; };
 		9EB4C917559DBD28B8A59F7E24809C82 /* InfiniteSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InfiniteSequence.swift; path = Platform/DataStructures/InfiniteSequence.swift; sourceTree = "<group>"; };
@@ -1095,7 +1095,7 @@
 		D45693494C0D172E1EC2B2A307FAE024 /* RxRelay-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RxRelay-Info.plist"; sourceTree = "<group>"; };
 		D49F1554F7FB4600702BA62F432F27D7 /* UIImage+MemoryCacheCost.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MemoryCacheCost.h"; path = "SDWebImage/Core/UIImage+MemoryCacheCost.h"; sourceTree = "<group>"; };
 		D532ADE6A8B23A99B232CE884B0AEB1C /* Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Rx.swift; path = RxSwift/Rx.swift; sourceTree = "<group>"; };
-		D674200BB0575198145B5455CF13275F /* youtube-ios-player-helper-Assets */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "youtube-ios-player-helper-Assets"; path = Assets.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D674200BB0575198145B5455CF13275F /* Assets.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Assets.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C6FCD529F0FC8EA427A56E0E8734AF /* SchedulerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SchedulerType.swift; path = RxSwift/SchedulerType.swift; sourceTree = "<group>"; };
 		D6D4F08EB72324ACC3AF6C97D94A6214 /* SDAsyncBlockOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAsyncBlockOperation.m; path = SDWebImage/Private/SDAsyncBlockOperation.m; sourceTree = "<group>"; };
 		D7E9C6578C335A9831B31EE03A06497C /* DispatchQueueConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DispatchQueueConfiguration.swift; path = RxSwift/Schedulers/Internal/DispatchQueueConfiguration.swift; sourceTree = "<group>"; };
@@ -1325,7 +1325,6 @@
 				763F3BC98D957E6DA905470DFC07CACD /* Validation.swift */,
 				FD1E84CD33647D437DF2ECA5A3909184 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1339,7 +1338,6 @@
 				5937453671EECE5A2FAAB01086EA63E6 /* Utils.swift */,
 				F6638E33D88AA1C4DF6F9B693050FA2C /* Support Files */,
 			);
-			name = RxRelay;
 			path = RxRelay;
 			sourceTree = "<group>";
 		};
@@ -1523,7 +1521,6 @@
 				8EDB7A1B7C20CDB0F112044D271C446D /* Zip+Collection.swift */,
 				41C83579CFCD708272AD730B548378E6 /* Support Files */,
 			);
-			name = RxSwift;
 			path = RxSwift;
 			sourceTree = "<group>";
 		};
@@ -1756,7 +1753,6 @@
 				6AA1DAB34AFF93837EBF2D8280B93E70 /* RxSwift */,
 				AC1E29DC5A23D8DCF194EED7DA9F27F8 /* Support Files */,
 			);
-			name = Moya;
 			path = Moya;
 			sourceTree = "<group>";
 		};
@@ -1766,7 +1762,6 @@
 				79B651DEEB03D090B8302908C1029888 /* SwiftyJSON.swift */,
 				3ED59ED845A6470461DE96781175B2E0 /* Support Files */,
 			);
-			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -1946,7 +1941,6 @@
 				239A88E0598FA8874B65DE950699972A /* WKWebView+Rx.swift */,
 				C313895FB3D84B5D7D2DC0D66C41D31E /* Support Files */,
 			);
-			name = RxCocoa;
 			path = RxCocoa;
 			sourceTree = "<group>";
 		};
@@ -1973,7 +1967,6 @@
 				EE665F8E686FB04623FA9DD604363DC3 /* Resources */,
 				7BF65DE2BE821BBF4834BE890F1F6752 /* Support Files */,
 			);
-			name = "youtube-ios-player-helper";
 			path = "youtube-ios-player-helper";
 			sourceTree = "<group>";
 		};
@@ -2010,7 +2003,7 @@
 				B0B214D775196BA7CA8E17E53048A493 /* SDWebImage */,
 				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON */,
 				8498A1B2C60117E181CA67921DDAE0B6 /* youtube-ios-player-helper */,
-				D674200BB0575198145B5455CF13275F /* youtube-ios-player-helper-Assets */,
+				D674200BB0575198145B5455CF13275F /* Assets.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2021,7 +2014,6 @@
 				30B29E9F263EA674BEE7FD28AF090C3D /* Core */,
 				B7A1C3D1E0C7C1DAD6E3CA642F366CB9 /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -2289,7 +2281,7 @@
 			);
 			name = "youtube-ios-player-helper-Assets";
 			productName = Assets;
-			productReference = D674200BB0575198145B5455CF13275F /* youtube-ios-player-helper-Assets */;
+			productReference = D674200BB0575198145B5455CF13275F /* Assets.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		3847153A6E5EEFB86565BA840768F429 /* SDWebImage */ = {
@@ -2484,7 +2476,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08E06C696103054C4B32302B72F87F9B /* youtube-ios-player-helper-Assets in Resources */,
+				08E06C696103054C4B32302B72F87F9B /* Assets.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3181,6 +3173,7 @@
 			baseConfigurationReference = 6619969C30BA080019B6EFBD0744052F /* youtube-ios-player-helper.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/youtube-ios-player-helper";
+				DEVELOPMENT_TEAM = CTYLXV3T38;
 				IBSC_MODULE = youtube_ios_player_helper;
 				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper/ResourceBundle-Assets-youtube-ios-player-helper-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -3818,6 +3811,7 @@
 			baseConfigurationReference = 63F608F088A20BDED9DE9B69209FCF94 /* youtube-ios-player-helper.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/youtube-ios-player-helper";
+				DEVELOPMENT_TEAM = CTYLXV3T38;
 				IBSC_MODULE = youtube_ios_player_helper;
 				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper/ResourceBundle-Assets-youtube-ios-player-helper-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

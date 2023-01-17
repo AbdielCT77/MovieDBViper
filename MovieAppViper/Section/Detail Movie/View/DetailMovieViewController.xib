@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,6 +21,7 @@
                 <outlet property="ratingLbl" destination="t6y-Kj-K29" id="rmE-Xn-siU"/>
                 <outlet property="tableView" destination="M7C-Zo-aBQ" id="M8w-e3-Wfa"/>
                 <outlet property="tableViewHeight" destination="IC0-wB-3ai" id="pvD-gj-HlV"/>
+                <outlet property="trailerStackView" destination="PdA-tS-htN" id="iYt-s4-5f5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="socialMediaButton" destination="JwB-pS-XMM" collectionClass="NSMutableArray" id="uRC-a0-qYy"/>
                 <outletCollection property="socialMediaButton" destination="o16-sW-9dg" collectionClass="NSMutableArray" id="wba-ir-JfL"/>
@@ -56,7 +58,8 @@
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWN-eN-8Id">
                                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="34"/>
                                                                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal" title="Button"/>
+                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                    <state key="normal" image="play.circle.fill" catalog="system"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="play.circle.fill" catalog="system"/>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch Trailer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bT4-rX-MTb">
@@ -181,7 +184,8 @@
                                                                         <constraint firstAttribute="width" constant="30" id="CyP-Vy-DZE"/>
                                                                     </constraints>
                                                                     <color key="tintColor" red="0.60392156860000001" green="0.60392156860000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <state key="normal" title="Button"/>
+                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                    <state key="normal" image="link" catalog="system"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="link" catalog="system"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -193,7 +197,8 @@
                                                                         <constraint firstAttribute="width" constant="30" id="Uic-uj-x0P"/>
                                                                     </constraints>
                                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal" title="Button"/>
+                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                    <state key="normal" image="instagram"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="instagram"/>
                                                                 </button>
                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH6-yK-AKH" userLabel="facebook">
@@ -202,7 +207,8 @@
                                                                         <constraint firstAttribute="width" constant="30" id="13k-y8-sr2"/>
                                                                     </constraints>
                                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal" title="Button"/>
+                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                    <state key="normal" image="facebook"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="facebook"/>
                                                                 </button>
                                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sl-K1-haE" userLabel="twitter">
@@ -211,7 +217,8 @@
                                                                         <constraint firstAttribute="width" constant="30" id="hHU-EQ-TdI"/>
                                                                     </constraints>
                                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal" title="Button"/>
+                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                    <state key="normal" image="twitter-sign"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="twitter-sign"/>
                                                                 </button>
                                                             </subviews>

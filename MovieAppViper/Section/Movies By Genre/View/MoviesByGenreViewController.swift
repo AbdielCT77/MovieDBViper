@@ -57,7 +57,9 @@ extension MoviesByGenreViewController: MoviesByGenresPresenterToViewProtocol {
     }
     
     func showError(error: BaseError) {
-        print("ini errornya, ", error.getError.getDesc())
+        self.showCustomToast(
+            title: error.getError.getTitle(), message: error.getError.getDesc()
+        )
     }
     
     func isLoading(isLoading: Bool) {

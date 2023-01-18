@@ -96,4 +96,53 @@ extension UIViewController {
         
         _navigationController.popViewController(animated: true)
     }
+    
+    func showCustomToast(
+        imageName: String = "cancel",
+        title: String,
+        message: String,
+        borderColor: String = "#c10225"
+    ) {
+        let toastView = GlobalToast()
+        toastView.image = imageName
+        toastView.title = title
+        toastView.subtitle = message
+        toastView.hexString = borderColor
+        
+        toastView.translatesAutoresizingMaskIntoConstraints = false
+        
+        var window: UIWindow? = view.window
+        
+        if window == nil {
+            window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        }
+        
+        guard let _window = window else {
+            return
+        }
+        
+        _window.addSubview(toastView)
+        NSLayoutConstraint.activate([
+            toastView.widthAnchor.constraint(
+                equalTo: _window.widthAnchor, constant: -40
+            ),
+            toastView.heightAnchor.constraint(equalToConstant: 68),
+            toastView.centerXAnchor.constraint(equalTo: _window.centerXAnchor),
+            toastView.bottomAnchor.constraint(
+                equalTo: _window.bottomAnchor, constant: -20
+            )
+        ])
+        
+        UIView.animate(
+            withDuration: 5,
+            delay: 0.1,
+            options: .curveEaseOut, animations: {
+                toastView.alpha = 0.0
+            }, completion: { isCompleted in
+                if isCompleted {
+                    toastView.removeFromSuperview()
+                }
+            }
+        )
+    }
 }

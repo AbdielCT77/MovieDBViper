@@ -205,7 +205,9 @@ extension DetailMovieViewController: DetailMoviePresenterToViewProtocol {
     }
     
     func showError(error: BaseError) {
-        print("ini error", error.getError.getDesc())
+        self.showCustomToast(
+            title: error.getError.getTitle(), message: error.getError.getDesc()
+        )
     }
     
     func isLoading(isLoading: Bool) {

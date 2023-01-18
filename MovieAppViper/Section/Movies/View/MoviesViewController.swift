@@ -55,7 +55,9 @@ extension MoviesViewController: MoviesPresenterToViewProtocol {
     }
     
     func showError(error: BaseError) {
-        print("ini errornya, ", error.getError.getDesc())
+        self.showCustomToast(
+            title: error.getError.getTitle(), message: error.getError.getDesc()
+        )
     }
     
     func isLoading(isLoading: Bool) {
@@ -83,6 +85,7 @@ extension MoviesViewController: UITableViewDelegate,
             for: indexPath
         ) as? MovieTableViewCell {
             cell.configureData(movie: dataMovie[indexPath.row])
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()
